@@ -27,8 +27,8 @@ resource "aws_db_instance" "default" {
 
 
 resource "aws_db_subnet_group" "default" {
-  name       = "main"
-  subnet_ids = ["vpc-0ee8ceb17cfd9e53b"]
+  name       = "rds"
+  subnet_ids = ["10.0.0.0/24"]
 
   tags = {
     Name = "My DB subnet group"
