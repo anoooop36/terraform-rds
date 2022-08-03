@@ -28,9 +28,21 @@ resource "aws_db_instance" "default" {
 
 resource "aws_db_subnet_group" "dbSubnet" {
   name       = "rds"
-  subnet_ids  = ["subnet-0ef9cca9ff26468f3"]
+  subnet_ids  = [aws_subnet.rds_subnet.id, aws_subnet.rds_subnet1.id]
 
   tags = {
     Name = "My DB subnet group"
   }
+}
+
+resource "aws_subnet" "rds_subnet" {
+  vpc_id     = "vpc-0ee8ceb17cfd9e53b"
+  cidr_block = "10.0.1.0/24"
+  availability_zone = "us-east-1a"
+}
+
+resource "aws_subnet" "rds_subnet1" {
+  vpc_id     = "vpc-0ee8ceb17cfd9e53b"
+  cidr_block = "10.0.2.0/24"
+  availability_zone = "us-east-1b"
 }
