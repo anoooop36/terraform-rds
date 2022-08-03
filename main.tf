@@ -22,11 +22,11 @@ resource "aws_db_instance" "default" {
   password             = "foobarbaz"
   parameter_group_name = "default.mysql5.7"
   skip_final_snapshot  = true
-  db_subnet_group_name = "${aws_db_subnet_group.db_subnet_group.id}"
+  db_subnet_group_name = "${aws_db_subnet_group.dbSubnet.name}"
 }
 
 
-resource "aws_db_subnet_group" "default" {
+resource "aws_db_subnet_group" "dbSubnet" {
   name       = "rds"
   subnet_ids = ["10.0.0.0/24"]
 
